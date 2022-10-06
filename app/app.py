@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 import tensorflow as tf
@@ -14,20 +14,24 @@ prediction_mapping = {
     0: "There's nothing to be worried about"
 }
 
+text_sent = []
+
 
 @app.route("/")
 def main():
     return render_template('main.html')
 
 
-@app.route("/response", methods=["POST"])
+@app.route("/", methods=["POST"])
 def response():
     # print(request.form.to_dict())
     text = request.form.get('tweet')
     clean_text = text_cleaner.preprocess_sentence(text)
     prediction = model.predict([clean_text])[0][0]
     prediction_text = prediction_mapping.get(round(prediction))
-    return render_template('response.html', text=text, prediction_text=prediction_text)
+    return render_template('main.html',
+                           text=text,
+                           prediction_text=prediction_text)
 
 
 if __name__ == "__main__":
