@@ -1,7 +1,6 @@
-# import sys
-# sys.path.append("..")
-
 from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+
 import tensorflow as tf
 
 from src.models.preprocess_data import TextCleanTransformer
@@ -14,6 +13,7 @@ prediction_mapping = {
     1: "Disaster!!!",
     0: "There's nothing to be worried about"
 }
+
 
 @app.route("/")
 def main():
