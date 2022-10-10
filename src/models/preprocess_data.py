@@ -8,7 +8,7 @@ import emoji
 class TextCleanTransformer:
     def __init__(self,
                  nlp_model=None):
-        self.nlp_model = spacy.load("en_core_web_lg") if not nlp_model else nlp_model
+        self.nlp_model = spacy.load("en_core_web_sm") if not nlp_model else nlp_model
 
     @staticmethod
     def preprocess_text(text):
