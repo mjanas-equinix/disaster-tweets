@@ -12,7 +12,29 @@ Example of using text cleaning module and model for predictions is available in 
 ## How to start
 - clone the repository<br>
 - create a virtual environment, activate it and install packages from requirements.txt<br>
-``pip install -r requirements.txt``<br>
+```bash 
+pip install -r requirements.txt
+```
 - install spacy model<br>
-``python -m spacy download en_core_web_sm``
+```bash
+python -m spacy download en_core_web_sm
+```
 - create new directory "app" and start building an app in it!
+
+## Example requests
+GET request<br>
+```bash 
+curl http://localhost:5000/
+```
+
+POST request<br>
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{
+  "text": "soft kitty warm kitty",
+  "prediction": 0
+}' http://localhost:5000/
+```
+
+## Additional materials
+Spectre CSS<br>
+https://picturepan2.github.io/spectre/getting-started/installation.html
